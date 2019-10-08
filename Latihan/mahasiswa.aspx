@@ -130,14 +130,15 @@
             AllowPaging="true"
             AllowSorting ="true"
             AutoGenerateColumns="false" 
-            DataKeyNames="nama"
+            DataKeyNames="nim"
             EmptyDataText ="Tidak Ada data"
             PageSize="5" 
             PagerStyle-CssClass="pagination-lg"
             OnSorting="gridDataMahasiswa_OnSorting"
             OnSelectedIndexChanged ="gridDataMahasiswa_SelectedIndexChanged"
             OnPageIndexChanging ="gridDataMahasiswa_PageIndexChanging"
-            OnRowCommand="gridDataMahasiswa_RowCommand">
+            OnRowCommand="gridDataMahasiswa_RowCommand"
+            >
             <Columns>
 
                 <asp:TemplateField HeaderText="No." ItemStyle-HorizontalAlign="Center">
@@ -160,7 +161,7 @@
                             <asp:LinkButton runat="server" ID="lnkEdit" CommandName="Ubah" CommandArgument ='<%# DataBinder.Eval(Container, "RowIndex")%>'
                             ToolTip="Ubah"><span class="btn btn-warning btn-circle btn-sm" aria-hidden="true"></span></asp:LinkButton>
                             <asp:LinkButton runat="server" ID="LinkButton1" CommandName="Delete" CommandArgument ='<%# DataBinder.Eval(Container, "RowIndex")%>'
-                            ToolTip="Delete Data"><span class="btn btn-warning btn-circle btn-sm" aria-hidden="true"></span></asp:LinkButton>
+                            ToolTip="Delete"><span class="btn btn-warning btn-circle btn-sm" aria-hidden="true"></span></asp:LinkButton>
                         </itemTemplate>
                     </asp:TemplateField>
            </Columns>
@@ -170,6 +171,158 @@
      </div>  
  </div>  
  </div>  
+
+    <div id="editMahasiswa" class="row" runat="server">
+         <div class="col-lg-6">
+              <!-- Basic Card Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Edit Matakuliah</h6>
+                </div>
+                <div class="card-body">
+                   <table>
+                        <tr>
+                            <td>
+                                <label>NIM</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNIMedit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator3"
+                            ControlToValidate="txtNIMedit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                            <asp:Label ID="lblnim" runat="server" Visible="false"></asp:Label>
+                            </td>
+                        </tr>
+
+                       <tr>
+                            <td>
+                                <label>Nama</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNamaedit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator5"
+                            ControlToValidate="txtNamaedit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                            
+                            </td>
+                        </tr>
+                       <tr>
+                            <td>
+                                <label>Tempat Lahir</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtTempatedit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator7"
+                            ControlToValidate="txtTempatedit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                           
+                            </td>
+                        </tr>
+                       <tr>
+                            <td>
+                                <label>Tanggal Lahir</label>
+                            </td>
+                            <td>
+                                <asp:Calendar ID="Calendar2" runat="server"></asp:Calendar>
+                            </td>
+
+                        </tr>
+                           <tr>
+                                <td>
+                                    <label>Prodi</label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="drProdiedit" runat="server"></asp:DropDownList>
+                                </td>
+                            </tr>
+                       <tr>
+                            <td>
+                                <label>Alamat</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtAlamatedit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator8"
+                            ControlToValidate="txtAlamatedit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                            
+                            </td>
+                        </tr>
+                       <tr>
+                            <td>
+                                <label>Email</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtEmailedit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator9"
+                            ControlToValidate="txtEmailedit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                           
+                            </td>
+                        </tr>   
+                        <tr>
+                            <td>
+                                <label>No HP</label>
+                            </td>
+                            <td>
+                                <asp:TextBox ID="txtNomoredit" runat="server"></asp:TextBox>
+                            </td>
+                            <td><asp:RequiredFieldValidator
+                            id="RequiredFieldValidator10"
+                            ControlToValidate="txtNomoredit"
+                            ForeColor="Red"
+                            ErrorMessage="*TextBox Tidak Boleh Kosong"
+                            OnServerValidate="CustomValidator"
+                            ValidateEmptyText="true"
+                            runat="server"
+                            ValidationGroup="valEdit" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnEdit" runat="server" Text="Ubah" ValidationGroup="valEdit" OnClick="btnEdit_Click"/>
+                            </td>
+                            
+                        </tr>
+                   </table>
+               </div>
+            </div>
+            </div>
+            </div>
+    </div>
+
 </form>
 </asp:Content>
 

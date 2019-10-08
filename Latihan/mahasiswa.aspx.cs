@@ -21,10 +21,16 @@ public partial class mahasiswa : System.Web.UI.Page
         {
             LoadData();
             AddMahasiswa.Visible = false;
-            //EditBuku.Visible = false;
+            editMahasiswa.Visible = false;
             viewMahasiswa.Visible = true;
-
+            add();
         }
+    }
+
+    public void add()
+    {
+        drProdiedit.Items.Add("MK");
+        drProdiedit.Items.Add("SI");
     }
 
     public DataSet LoadData()
@@ -103,15 +109,35 @@ public partial class mahasiswa : System.Web.UI.Page
     {
         if (e.CommandName == "Ubah")
         {
-            string nim = gridDataMahasiswa.DataKeys[Convert.ToInt32(e.CommandArgument.ToString())].Value.ToString();
-            //lblIdEdit.Text = judul;
-            //txtEditNama.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[1].Text;
-            AddMahasiswa.Visible = false;
-            //EditBuku.Visible = true;
+            string id = gridDataMahasiswa.DataKeys[Convert.ToInt32(e.CommandArgument.ToString())].Value.ToString();
+            lblnim.Text = id;
+            txtNIMedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[1].Text;
+            txtNamaedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[2].Text;
+            txtTempatedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[3].Text;
+
+            //drProdiedit.SelectedValue = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[5].Text;
+            txtAlamatedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[6].Text;
+            txtEmailedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[7].Text;
+            txtNomoredit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[8].Text;
             viewMahasiswa.Visible = false;
+            editMahasiswa.Visible = true;
+            AddMahasiswa.Visible = false;
         }
-        else if (e.CommandName == "Hapus")
+        else if (e.CommandName == "Delete")
         {
+            txtNIMedit.Text = gridDataMahasiswa.Rows[Convert.ToInt32(e.CommandArgument.ToString())].Cells[0].Text;
+            SqlCommand com = new SqlCommand();
+            com.Connection = con;
+            com.CommandText = "[sp_DeleteMahasiswa]";
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@nim", txtNIMedit.Text);
+            con.Open();
+            int result = Convert.ToInt32(com.ExecuteNonQuery());
+            con.Close();
+            LoadData();
+            viewMahasiswa.Visible = true;
+            editMahasiswa.Visible = false;
+            AddMahasiswa.Visible = false;
         }
 
     }
@@ -157,4 +183,34 @@ public partial class mahasiswa : System.Web.UI.Page
         // edit.Visible = false;
         AddMahasiswa.Visible = false;
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        SqlCommand com = new SqlCommand();
+        com.Connection = con;
+        com.CommandText = "[sp_UpdateMahasiswa]";
+        com.CommandType = CommandType.StoredProcedure;
+        com.Parameters.AddWithValue("@nim", txtNIMedit.Text);
+        com.Parameters.AddWithValue("@nama", txtNamaedit.Text);
+        com.Parameters.AddWithValue("@tempatlahir", txtTempatedit.Text);
+        com.Parameters.AddWithValue("@tgl_lahir", Calendar2.SelectedDate);
+        com.Parameters.AddWithValue("@prodi", drProdiedit.Text);
+        com.Parameters.AddWithValue("@alamat", txtAlamatedit.Text);
+        com.Parameters.AddWithValue("@email", txtEmailedit.Text);
+        com.Parameters.AddWithValue("@nohp", txtNomoredit.Text);
+        con.Open();
+
+        int result = Convert.ToInt32(com.ExecuteNonQuery());
+        con.Close();
+        LoadData();
+        viewMahasiswa.Visible = true;
+        editMahasiswa.Visible = false;
+        AddMahasiswa.Visible = false;
+    }
+
+    //protected void gridDataMahasiswa_RowDeleting(object sender, GridViewDeletedEventArgs e)
+    //{
+    //    LoadData();
+    //}
+    
 }
