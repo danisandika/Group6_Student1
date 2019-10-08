@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="Mahasiswa.aspx.cs" Inherits="Mahasiswa" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="title" Runat="Server">
+    Mahasiswa
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="title" Runat="Server">
-    Home
+<asp:Content ID="Content2" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="content" Runat="Server">
      <!-- ============================================================== -->
@@ -15,10 +15,10 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Mahasiswa</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Admin</a></li>
+                            <li class="breadcrumb-item active">Mahasiswa</li>
                         </ol>
                     </div>
                     
