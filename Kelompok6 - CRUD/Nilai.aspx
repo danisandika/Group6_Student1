@@ -33,7 +33,49 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-block">
-                                This is some text within a card block.
+                                  <div class="col-md-7 col-4 align-self-left">
+                                        <a href="" class="btn waves-effect waves-light btn-danger pull-left hidden-sm-down"><span class="mdi mdi-plus"></span>Tambah</a>
+                                  </div>
+
+                                
+                                <div class="col-md-10 col-4 align-right">
+                                    <div class="form-group pull-right">
+                                         <button class="btn waves-effect waves-light btn-success pull-left hidden-sm-down" type="submit" style="height:38px">
+                                            <span class="mdi mdi-search-web"></span> Search
+                                         </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-10 col-4 align-self-right">
+                                    <div class="form-group pull-right ">
+                                       <input type="text" placeholder="Cari..." class="form-control form-control-md">
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Username</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Deshmukh</td>
+                                                <td>Prohaska</td>
+                                                <td>@Genelia</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Deshmukh</td>
+                                                <td>Gaylord</td>
+                                                <td>@Ritesh</td>
+                                            </tr>
+                                            </table>
+                                    </div>
                             </div>
                         </div>
                     </div>
